@@ -1,0 +1,65 @@
+<mdl-card mdl-shadow="6" style="width: 700px; height: 400px; margin: 100px;" >
+
+    <h3 class="mdl-dialog__title">Sign up</h3>
+    <div class="mdl-dialog__content">
+        <div class = "absolute">
+        <mdl-textfield #firstElement
+                       type = 'text'
+                       label="Name"
+                       [(ngModel)] = 'donor.name'
+                       floating-label
+                       autofocus></mdl-textfield>
+        <br/>
+        <mdl-textfield  type = 'text'
+                        label="Surname"
+                        [(ngModel)] = 'donor.surname'
+                        floating-label ></mdl-textfield>
+        <br/>
+        <mdl-textfield  type = 'text'
+                        label="Patronymic"
+                        [(ngModel)] = 'donor.patronymic'
+                        floating-label ></mdl-textfield>
+        <br/>
+        <mdl-textfield
+                type="date"
+                [(ngModel)]="donor.birthdate"
+                floating-label></mdl-textfield>
+        <br/>
+        </div>
+        <div class="relative">
+            <mdl-textfield  type = 'text'
+                            label="Email"
+                            [(ngModel)] = 'donor.email'
+                            floating-label
+                            error-msg="Incorrect email!">></mdl-textfield>
+            <br/>
+
+            <mdl-textfield
+                    type="password"
+                    label="Password"
+                    [(ngModel)]="donor.password"
+                    floating-label></mdl-textfield>
+            <br/>
+            <mdl-textfield
+                    type="text"
+                    label="City"
+                    error-msg="Incorrect city"
+                    [(ngModel)]="donor.city"
+                    floating-label></mdl-textfield>
+            <br/>
+
+            <label>Group</label>
+            <mdl-radio  value="1" [(ngModel)]="donor.group" mdl-ripple> 1</mdl-radio>
+            <mdl-radio  value="2" [(ngModel)]="donor.group" mdl-ripple> 2</mdl-radio>
+            <mdl-radio  value="3" [(ngModel)]="donor.group" mdl-ripple> 3</mdl-radio>
+            <mdl-radio  value="4" [(ngModel)]="donor.group" mdl-ripple> 4</mdl-radio>
+            <br/>
+            <label>Rhesus</label>
+            <mdl-radio  value="positive"  [(ngModel)]="donor.rhesus" mdl-ripple> +</mdl-radio>
+            <mdl-radio  value="negative" [(ngModel)]="donor.rhesus" mdl-ripple> -</mdl-radio>
+        </div>
+    </div>
+    <div class="mdl-dialog__actions">
+        <button mdl-button (click)="onClick()" mdl-button-type="raised" mdl-colored="primary" mdl-ripple>Sign up</button>
+    </div>
+</mdl-card>

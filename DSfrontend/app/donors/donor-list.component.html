@@ -1,0 +1,67 @@
+<mdl-card mdl-shadow="6" style="position: fixed; left:10px; top:80px; width: 250px;height: 110px;">
+    <div style="margin: 10px;">
+        <mdl-textfield
+                type = "text"
+                label = "name"
+                [(ngModel)]="name"
+        ></mdl-textfield>
+        <br/>
+        <mdl-card-actions mdl-card-border >
+            <button mdl-button mdl-colored
+                    mdl-ripple (click)="find()">
+                Find
+            </button>
+         </mdl-card-actions>
+    </div>
+</mdl-card>
+
+    <div *ngIf="donors">
+
+        <div class="mdl-grid" align = "center">
+
+            <h4 *ngIf="resultFor  && (donors.length)" style="position: absolute; top: 50px; left:300px;"> Results for: {{resultFor}}</h4>
+            <h4 *ngIf="resultFor  && (!donors.length)" style="position: absolute; top: 50px; left:300px;"> No results for: {{resultFor}}</h4>
+
+            <div class="mdl-cell mdl-cell--6-col " style="position: relative; top:100px; left:150px;"
+             *ngFor="let donor of donors ">
+
+        <mdl-card class="wide-card" mdl-shadow="6" >
+            <mdl-card-title mdl-card-expand>
+                <h2 mdl-card-title-text>
+                    <a [routerLink] = "['/donor', donor._id]">
+                    {{donor.surname+' ' + donor.name}}
+                </a></h2>
+            </mdl-card-title>
+            <mdl-card-media *ngIf= "donor.avatar" style="background-color: white">
+                <img [src]="donor.avatar" style = "width:150; height;150;">
+
+            </mdl-card-media>
+
+            <mdl-card-supporting-text>
+
+            </mdl-card-supporting-text>
+
+        </mdl-card>
+        </div>
+
+
+    </div>
+
+</div>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <div align="center" *ngIf="!resultFor">
+        <ul class="pagination">
+            <li [ngClass]="{disabled: pageNum === 1}">
+                <a (click) ="onPrevClick()" >Prev</a>
+            </li>
+            <li [ngClass]="{disabled: isNextDisabled}">
+                <a (click)="onNextClick()">Next</a>
+            </li>
+        </ul>
+    </div>
+
+

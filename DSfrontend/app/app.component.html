@@ -1,0 +1,29 @@
+<div>
+    <nav class='navbar navbar-default navbar-fixed-top'>
+        <div class='container-fluid'>
+            <a class='navbar-brand'>
+                <span class="glyphicon glyphicon-tint"></span>{{pageTitle}}</a>
+            <ul class='nav navbar-nav'>
+                <li><a [routerLink]="['/welcome']">Home</a></li>
+                <li><a [routerLink]="['/donors']">All donors</a></li>
+                <li><a [routerLink] = "['/recipients']">All recipients</a></li>
+                <li><a [routerLink] = "['/news']"> News</a></li>
+                <li><a [routerLink] = "['/info']"> Info</a></li>
+                <li *ngIf = "admin"><a [routerLink] = "['/new_recipients']"> New recipients</a></li>
+
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li  *ngIf="donor"><a [routerLink] = "['/donorprofile']" >{{donor.name + ' '+ donor.surname}}</a></li>
+                <li *ngIf="admin"><a [routerLink] = "['/']" >Hi, admin</a></li>
+                <li *ngIf="donor || admin"> <button mdl-button   style="margin: 8px; color: white;" (click)="OnLogOut()">
+                    Log out
+                </button></li>
+            </ul>
+
+        </div>
+    </nav>
+    <div class='container'>
+        <router-outlet></router-outlet>
+    </div>
+
+</div>

@@ -1,0 +1,23 @@
+<mdl-card class="wide-card"  mdl-shadow="6"  style="position: absolute; top:60px;
+                        left:100px; width:400px; heigth:300px;" >
+    <mdl-card-title mdl-card-expand>
+        <h2 mdl-card-title-text>{{donor.surname+ ' ' + donor.name}}</h2>
+    </mdl-card-title>
+    <mdl-card-media style="background-color: white; margin: 20px;"  *ngIf="donor.avatar">
+        <img [src]="donor.avatar" >
+        <div  style="position: absolute; right:400px; top:100px;">
+            <mdl-chip mdl-label="Your donations"></mdl-chip>
+
+
+        </div>
+
+    </mdl-card-media>
+    <mdl-card-supporting-text>
+        {{"Last donation: "+ donor.donation }}
+        <br/>
+        {{donor. age + " years old"}}
+        <br/>
+        {{donor.group + " group"}}
+    </mdl-card-supporting-text>
+</mdl-card>
+

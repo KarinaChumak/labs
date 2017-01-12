@@ -1,0 +1,43 @@
+var express = require('express');
+var router = express.Router();
+var adminController = require('../../controllers/admins.controller');
+var recipientController = require ('../../controllers/recipient.controller');
+var status = require('../../config/status');
+
+
+router.delete('/delete', function(req,res){
+
+        if(req.user.role) {
+        recipientController.delete(req.body._id)
+            .then((result)=>res.json(result))
+            .catch((err)=>res.json(err));
+        }
+        else res.json(status.no_rights);
+
+});
+
+
+
+router.get('/new_recipients', function(req, res){
+
+        if(req.user.role) {
+                recipientController.getNew()
+                    .then((result)=>res.json(result))
+                    .catch((err)=>res.json(err));
+        }
+        else res.json(status.no_rights);
+
+});
+
+router.post('/accept', function (req,res) {
+        if(req.user.role) {
+                recipientController.changeStatus(req.body._id)
+                    .then((result)=>res.json(result))
+                    .catch((err)=> res.json(err));
+        }
+        else res.json(status.no_rights);
+});
+
+
+
+module.exports = router;
